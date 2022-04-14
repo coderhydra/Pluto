@@ -11,7 +11,7 @@ screen = pygame.display.set_mode(size)
 done = False
 clock = pygame.time.Clock()
 
-# img load
+# img load¡
 lucas = pygame.image.load('../images/lucas.png')
 money = pygame.image.load('../images/8bit_money.png')
 BG = pygame.image.load('../images/grass_BG.jpeg')

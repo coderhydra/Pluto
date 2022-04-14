@@ -1,6 +1,7 @@
+import time
+
 import pygame
 import datetime
-import time
 # 스크린 전체 크기 지정
 SCREEN_WIDTH = 400
 SCREEN_HEIGHT = 500
@@ -34,23 +35,28 @@ while playing:
     # Font 객체 생성
     myFont = pygame.font.SysFont("arial", 30, True, False)
 
+    watch_now = '{}:{}:{}'.format(datetime.datetime.now().hour,datetime.datetime.now().minute, datetime.datetime.now().second)
+    datetime_weekday = datetime.datetime.now().weekday()
+    weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    weekday = ""
+    for i in range(len(weekdays)):
+        if datetime_weekday==i:
+            weekday = weekdays[i]
     # Text를 surface에 그리기, 안티알리어싱, 검은색
-    text_Title = myFont.render(str(datetime.datetime.now()), True, BLACK)
+    date = myFont.render(str(datetime.datetime.now().date())+" "+weekday, True, BLACK)
+    watch = myFont.render(str(watch_now), True, BLACK)
     # Rect 생성
-    text_Rect = text_Title.get_rect()
-
+    watch_Rect = watch.get_rect()
+    date_Rect = date.get_rect()
     # 가로 가운데, 세로 50 위치
-    text_Rect.centerx = round(SCREEN_WIDTH / 2)
-    text_Rect.y = 50
+    date_Rect.centerx = round(SCREEN_WIDTH / 2)
+    date_Rect.y = 50
+    watch_Rect.centerx = round(SCREEN_WIDTH / 2)
+    watch_Rect.y = 100
 
     # Text Surface SCREEN에 복사하기, Rect 사용
-    SCREEN.blit(text_Title, text_Rect)
-
-    # Text를 surface에 그리기, 알리어싱, 검은색
-    text_Title2 = myFont.render(str(time.localtime().tm_sec), True, BLACK)
-
-    # Text Surface SCREEN에 복사하기, 좌표 사용
-    SCREEN.blit(text_Title2, [50, 200])
+    SCREEN.blit(watch, watch_Rect)
+    SCREEN.blit(date, date_Rect)
 
     # 작업한 스크린의 내용을 갱신하기
     pygame.display.flip()

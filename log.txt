@@ -1,0 +1,19 @@
+파이게임으로 콘솔???만들고
+autogui 로 마우스 컨트롤
+
+time
+
+    work break
+set
+run
+
+option(limit) play
+mute
+mouse centering on/off => hotkey?
+
+파이게임에서 키보드 입력
+마우스 컨트롤
+    인풋받기
+    텍스트 띄위기
+    옵션 만들기
+    온 오프 토글 만들기
